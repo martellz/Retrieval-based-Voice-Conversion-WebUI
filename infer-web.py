@@ -168,7 +168,7 @@ def vc_single(
     sid,
     input_audio_path,
     f0_up_key,
-    f0_file,
+    # f0_file,
     f0_method,
     file_index,
     file_index2,
@@ -226,7 +226,7 @@ def vc_single(
             rms_mix_rate,
             version,
             protect,
-            f0_file=f0_file,
+            f0_file=None,
         )
         index_info = (
             "Using index:%s." % file_index
@@ -1559,7 +1559,7 @@ with gr.Blocks(title="RVC WebUI") as app:
                             spk_item,
                             input_audio0,
                             vc_transform0,
-                            f0_file,
+                            # f0_file,
                             f0method0,
                             file_index1,
                             file_index2,
@@ -1699,6 +1699,7 @@ with gr.Blocks(title="RVC WebUI") as app:
                 fn=get_vc,
                 inputs=[sid0, protect0, protect1],
                 outputs=[spk_item, protect0, protect1, file_index2, file_index4],
+                api_name="infer_sid0",
             )
         with gr.TabItem(i18n("伴奏人声分离&去混响&去回声")):
             with gr.Group():
